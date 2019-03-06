@@ -64,7 +64,9 @@ public class USACO {
           depth += pasture[i][j];
         }
       }
-      System.out.println(depth);
+      //System.out.println(depth);
+
+      return depth * 72 * 72;
 
     } catch (FileNotFoundException e){
       System.out.println("File not found");
@@ -111,7 +113,7 @@ public class USACO {
 
 
   public static void main(String[] args){
-    bronze("makelake.1.in");
+    System.out.println(bronze("makelake.1.in"));
 
   }
   //public static int silver(String filename)
