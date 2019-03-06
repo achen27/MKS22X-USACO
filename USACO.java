@@ -101,22 +101,54 @@ public class USACO {
       File f = new File(filename);
       Scanner s = new Scanner(f);
 
+      //put row length, col length, and seconds into variables
       int row = s.nextInt();
       int col = s.nextInt();
       int seconds = s.nextInt();
+
+      String p = "";
+      for (int i = 0; i < row; i++){
+        p += s.next();
+      }
+      //System.out.println(p);
+      //System.out.println(row);
+      //System.out.println(col);
+      char[][] pasture = new char[row][col];
+      int idx = 0;
+      for (int i = 0; i < row; i++){
+        for (int j = 0; j < col; j++){
+          pasture[i][j] = p.charAt(idx);
+          idx++;
+        }
+      }
+      System.out.println(toString(pasture));
 
     } catch (FileNotFoundException e){
       System.out.println("File not found");
       return 0;
     }
+    return 0;
+  }
+
+  public static String toString(char[][] array){
+    String s = "";
+    for (int i = 0; i < array.length; i++){
+      for (int j = 0; j < array[0].length; j++){
+        s += array[i][j] + " ";
+      }
+      s += "\n";
+    }
+    return s;
   }
 
   public static void main(String[] args){
-    System.out.println(bronze("makelake.1.in"));
+    /*System.out.println(bronze("makelake.1.in"));
     System.out.println(bronze("makelake.2.in"));
     System.out.println(bronze("makelake.3.in"));
     System.out.println(bronze("makelake.4.in"));
-    System.out.println(bronze("makelake.5.in"));
+    System.out.println(bronze("makelake.5.in"));*/
+
+    System.out.println(silver("ctravel.1.in"));
   }
 
 }
