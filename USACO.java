@@ -64,14 +64,15 @@ public class USACO {
         }
       }
     }
-
-
+    //System.out.println(high);
+    high -= Ds;
+    //System.out.println(high);
 
     //Change all elevations higher or equal to high - Ds
     for (int i = Rs; i < Rs + 3; i++){
       for (int j = Cs; j < Cs + 3; j++){
-        if (pasture[i][j] >= high){
-          pasture[i][j] = high - Ds;
+        if (pasture[i][j] > high){
+          pasture[i][j] = high;
         }
       }
     }
