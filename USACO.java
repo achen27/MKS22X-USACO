@@ -40,8 +40,10 @@ public class USACO {
       //System.out.println(Arrays.deepToString(list));
 
       //reading through instructions and changing pasture accordingly
+      System.out.println(toString(pasture));
       for (int i = 0; i < list.length; i++){
-        stomp(list[i][1], list[i][2], list[i][3], pasture); //helper method to modify array
+        stomp(list[i][0] - 1, list[i][1] - 1, list[i][2], pasture); //helper method to modify array
+        System.out.println(toString(pasture));
       }
 
     } catch (FileNotFoundException e){
@@ -55,11 +57,15 @@ public class USACO {
     int high = 0;
     for (int i = Rs; i < Rs + 3; i++){
       for (int j = Cs; j < Cs + 3; j++){
+        //System.out.println(i);
+        //System.out.println(j);
         if (pasture[i][j] > high){
           high = pasture[i][j];
         }
       }
     }
+
+
 
     //Change all elevations higher or equal to high - Ds
     for (int i = Rs; i < Rs + 3; i++){
@@ -69,6 +75,17 @@ public class USACO {
         }
       }
     }
+  }
+
+  public static String toString(int[][] array){
+    String s = "";
+    for (int i = 0; i < array.length; i++){
+      for (int j = 0; j < array[0].length; j++){
+        s += array[i][j] + " ";
+      }
+      s += "\n";
+    }
+    return s;
   }
 
 
