@@ -10,15 +10,10 @@ public class USACO {
       Scanner s = new Scanner(f);
 
       //reads first line of file and places valeus into variables
-      int row;
-      int col;
-      int elevation;
-      int instructions;
-
-      row = s.nextInt();
-      col = s.nextInt();
-      elevation = s.nextInt();
-      instructions = s.nextInt();
+      int row = s.nextInt();
+      int col = s.nextInt();
+      int elevation = s.nextInt();
+      int instructions = s.nextInt();
 
       //reading pasture elevations onto a 2D array
       int[][] pasture = new int[row][col];
@@ -100,6 +95,21 @@ public class USACO {
     return s;
   }
 
+  public static int silver(String filename){
+    try {
+
+      File f = new File(filename);
+      Scanner s = new Scanner(f);
+
+      int row = s.nextInt();
+      int col = s.nextInt();
+      int seconds = s.nextInt();
+
+    } catch (FileNotFoundException e){
+      System.out.println("File not found");
+      return 0;
+    }
+  }
 
   public static void main(String[] args){
     System.out.println(bronze("makelake.1.in"));
@@ -108,6 +118,5 @@ public class USACO {
     System.out.println(bronze("makelake.4.in"));
     System.out.println(bronze("makelake.5.in"));
   }
-  //public static int silver(String filename)
 
 }
