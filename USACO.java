@@ -19,7 +19,6 @@ public class USACO {
       col = s.nextInt();
       elevation = s.nextInt();
       instructions = s.nextInt();
-      //System.out.println(row + " " + col + " " + elevation + " " + instructions);
 
       //reading pasture elevations onto a 2D array
       int[][] pasture = new int[row][col];
@@ -28,7 +27,6 @@ public class USACO {
           pasture[i][j] = s.nextInt();
         }
       }
-      //System.out.println(Arrays.deepToString(pasture));
 
       //reading list of instructions into 2D Array
       int[][] list = new int[instructions][3];
@@ -37,13 +35,10 @@ public class USACO {
           list[i][j] = s.nextInt();
         }
       }
-      //System.out.println(Arrays.deepToString(list));
 
       //reading through instructions and changing pasture accordingly
-      //System.out.println(toString(pasture));
       for (int i = 0; i < list.length; i++){
         stomp(list[i][0] - 1, list[i][1] - 1, list[i][2], pasture); //helper method to modify array
-        //System.out.println(toString(pasture));
       }
 
       //Changing pasture depths
@@ -55,7 +50,6 @@ public class USACO {
           }
         }
       }
-      //System.out.println(toString(pasture));
 
       //Finding total aggrevated depth
       int depth = 0;
@@ -64,14 +58,13 @@ public class USACO {
           depth += pasture[i][j];
         }
       }
-      //System.out.println(depth);
 
       return depth * 72 * 72;
 
     } catch (FileNotFoundException e){
       System.out.println("File not found");
+      return 0;
     }
-    return 0;
   }
 
   private static void stomp(int Rs, int Cs, int Ds, int[][] pasture){
@@ -79,16 +72,12 @@ public class USACO {
     int high = 0;
     for (int i = Rs; i < Rs + 3; i++){
       for (int j = Cs; j < Cs + 3; j++){
-        //System.out.println(i);
-        //System.out.println(j);
         if (pasture[i][j] > high){
           high = pasture[i][j];
         }
       }
     }
-    //System.out.println(high);
     high -= Ds;
-    //System.out.println(high);
 
     //Change all elevations higher or equal to high - Ds
     for (int i = Rs; i < Rs + 3; i++){
@@ -114,7 +103,10 @@ public class USACO {
 
   public static void main(String[] args){
     System.out.println(bronze("makelake.1.in"));
-
+    System.out.println(bronze("makelake.2.in"));
+    System.out.println(bronze("makelake.3.in"));
+    System.out.println(bronze("makelake.4.in"));
+    System.out.println(bronze("makelake.5.in"));
   }
   //public static int silver(String filename)
 
