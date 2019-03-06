@@ -5,7 +5,6 @@ public class USACO {
 
   public static int bronze(String filename){
     try {
-      int[][] list;
 
       File f = new File(filename);
       Scanner s = new Scanner(f);
@@ -29,8 +28,16 @@ public class USACO {
           pasture[i][j] = s.nextInt();
         }
       }
+      //System.out.println(Arrays.deepToString(pasture));
 
-      System.out.println(Arrays.deepToString(pasture));
+      //reading list of instructions into 2D Array
+      int[][] list = new int[instructions][3];
+      for (int i = 0; i < instructions; i++){
+        for (int j = 0; j < 3; j++){
+          list[i][j] = s.nextInt();
+        }
+      }
+      //System.out.println(Arrays.deepToString(list));
 
     } catch (FileNotFoundException e){
       System.out.println("File not found");
