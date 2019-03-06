@@ -55,7 +55,16 @@ public class USACO {
           }
         }
       }
-      System.out.println(toString(pasture));
+      //System.out.println(toString(pasture));
+
+      //Finding total aggrevated depth
+      int depth = 0;
+      for (int i = 0; i < row; i++){
+        for (int j = 0; j < col; j++){
+          depth += pasture[i][j];
+        }
+      }
+      System.out.println(depth);
 
     } catch (FileNotFoundException e){
       System.out.println("File not found");
