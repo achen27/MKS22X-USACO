@@ -39,10 +39,27 @@ public class USACO {
       }
       //System.out.println(Arrays.deepToString(list));
 
+      //reading through instructions and changing pasture accordingly
+      for (int i = 0; i < list.length; i++){
+        stomp(list[i][1], list[i][2], list[i][3], pasture); //helper method to modify array
+      }
+
     } catch (FileNotFoundException e){
       System.out.println("File not found");
     }
     return 0;
+  }
+
+  private static void stomp(int Rs, int Cs, int Ds, int[][] pasture){
+    //Pt.1 Find highest point
+    int high = 0;
+    for (int i = Rs; i < Rs + 3; i++){
+      for (int j = Cs; j < Cs + 3; j++){
+        if (pasture[i][j] > high){
+          high = pasture[i][j];
+        }
+      }
+    }
   }
 
   public static void main(String[] args){
