@@ -40,11 +40,22 @@ public class USACO {
       //System.out.println(Arrays.deepToString(list));
 
       //reading through instructions and changing pasture accordingly
-      System.out.println(toString(pasture));
+      //System.out.println(toString(pasture));
       for (int i = 0; i < list.length; i++){
         stomp(list[i][0] - 1, list[i][1] - 1, list[i][2], pasture); //helper method to modify array
-        System.out.println(toString(pasture));
+        //System.out.println(toString(pasture));
       }
+
+      //Changing pasture depths
+      for (int i = 0; i < row; i++){
+        for (int j = 0; j < col; j++){
+          pasture[i][j] = elevation - pasture[i][j];
+          if (pasture[i][j] < 0){
+            pasture[i][j] = 0;
+          }
+        }
+      }
+      System.out.println(toString(pasture));
 
     } catch (FileNotFoundException e){
       System.out.println("File not found");
