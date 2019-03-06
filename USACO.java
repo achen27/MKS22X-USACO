@@ -51,7 +51,7 @@ public class USACO {
   }
 
   private static void stomp(int Rs, int Cs, int Ds, int[][] pasture){
-    //Pt.1 Find highest point
+    //Find highest elevation
     int high = 0;
     for (int i = Rs; i < Rs + 3; i++){
       for (int j = Cs; j < Cs + 3; j++){
@@ -60,7 +60,17 @@ public class USACO {
         }
       }
     }
+
+    //Change all elevations higher or equal to high - Ds
+    for (int i = Rs; i < Rs + 3; i++){
+      for (int j = Cs; j < Cs + 3; j++){
+        if (pasture[i][j] >= high){
+          pasture[i][j] = high - Ds;
+        }
+      }
+    }
   }
+
 
   public static void main(String[] args){
     bronze("makelake.1.in");
