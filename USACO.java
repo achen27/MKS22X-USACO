@@ -121,7 +121,14 @@ public class USACO {
           idx++;
         }
       }
-      System.out.println(toString(pasture));
+      //System.out.println(toString(pasture));
+
+      int startR = s.nextInt();
+      int startC = s.nextInt();
+      System.out.println(startR + ", " + startC);
+      int endR = s.nextInt();
+      int endC = s.nextInt();
+      System.out.println(endR + ", " + endC);
 
     } catch (FileNotFoundException e){
       System.out.println("File not found");
