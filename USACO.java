@@ -135,10 +135,11 @@ public class USACO {
       //System.out.println(endR + ", " + endC);
 
       int[][] moves = new int[row][col];
+      moves[startR-1][startC-1] = 1;
 
-      updateMoves(pasture, moves, startR-1, startC-1, seconds);
-      System.out.println(toString(pasture));
-      System.out.println(toString(moves));
+      moves = updateMoves(pasture, moves, startR-1, startC-1, seconds);
+      //System.out.println(toString(pasture));
+      //System.out.println(toString(moves));
       return moves[endR-1][endC-1];
 
     } catch (FileNotFoundException e){
@@ -147,16 +148,15 @@ public class USACO {
     }
   }
 
-  private static void updateMoves(char[][] c, int[][] m, int row, int col, int s){
+  private static int[][] updateMoves(char[][] c, int[][] m, int row, int col, int s){
     int[][] m2 = new int[m.length][m[0].length];
-    m[row][col] = 1;
     while (s > 0){
       for (int i = 0; i < m.length; i++){
         for(int j = 0; j < m[0].length; j++){
           if (m[i][j] != 0){
             try{
               if (c[i+1][j] != '*'){
-                m2[i+1][j] += 1;
+                m2[i+1][j] += m[i][j];
                 //System.out.println("D");
               }
             }catch(ArrayIndexOutOfBoundsException e){
@@ -164,7 +164,7 @@ public class USACO {
             }
             try{
               if (c[i-1][j] != '*'){
-                m2[i-1][j] += 1;
+                m2[i-1][j] += m[i][j];
                 //System.out.println("U");
               }
             }catch(ArrayIndexOutOfBoundsException e){
@@ -172,7 +172,7 @@ public class USACO {
             }
             try{
               if (c[i][j+1] != '*'){
-                m2[i][j+1] += 1;
+                m2[i][j+1] += m[i][j];
                 //System.out.println("R");
               }
             }catch(ArrayIndexOutOfBoundsException e){
@@ -180,7 +180,7 @@ public class USACO {
             }
             try {
               if (c[i][j-1] != '*'){
-                m2[i][j-1] += 1;
+                m2[i][j-1] += m[i][j];
                 //System.out.println("L");
               }
             }catch(ArrayIndexOutOfBoundsException e){
@@ -190,10 +190,11 @@ public class USACO {
         }
       }
       m = m2;
-      System.out.println(toString(m2));
+      //System.out.println(toString(m2));
       m2 = new int[m.length][m[0].length];
       s--;
     }
+    return m;
   }
 
   public static String toString(char[][] array){
@@ -214,11 +215,11 @@ public class USACO {
     System.out.println(bronze("makelake.4.in"));
     System.out.println(bronze("makelake.5.in"));*/
 
-    System.out.println(silver("ctravel.1.in"));
-    //System.out.println(silver("ctravel.2.in"));
-    //System.out.println(silver("ctravel.3.in"));
-    //System.out.println(silver("ctravel.4.in"));
-    //System.out.println(silver("ctravel.5.in"));
+    //System.out.println(silver("ctravel.1.in"));
+    System.out.println(silver("ctravel.2.in"));
+    System.out.println(silver("ctravel.3.in"));
+    System.out.println(silver("ctravel.4.in"));
+    System.out.println(silver("ctravel.5.in"));
   }
 
 }
