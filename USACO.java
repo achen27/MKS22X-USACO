@@ -125,16 +125,48 @@ public class USACO {
 
       int startR = s.nextInt();
       int startC = s.nextInt();
-      System.out.println(startR + ", " + startC);
+      //System.out.println(startR + ", " + startC);
       int endR = s.nextInt();
       int endC = s.nextInt();
-      System.out.println(endR + ", " + endC);
+      //System.out.println(endR + ", " + endC);
+
+      int[][] moves = new int[row][col];
+
+      updateMoves(pasture, moves, startR, startC, seconds);
 
     } catch (FileNotFoundException e){
       System.out.println("File not found");
       return 0;
     }
     return 0;
+  }
+
+  private static void updateMoves(char[][] c, int[][] m, int row, int col, int s){
+    int idx = 1;
+    m[row][col] = 1;
+    while (idx < s){
+      for (int i = 0; i < m.length; i++){
+        for(int j = 0; j <m[0].length; j++){
+          if (m[i][j] != 0){
+            m[i][j] -= 1;
+            if (c[i+1][j] != '*'){
+              m[i+1][j] += 1;
+            }
+            if (c[i-1][j] != '*'){
+              m[i-1][j] += 1;
+            }
+            if (c[i][j+1] != '*'){
+              m[i][j+1] += 1;
+            }
+            if (c[i][j-1] != '*'){
+              m[i][j-1] += 1;
+            }
+          }
+        }
+      }
+
+      s--;
+    }
   }
 
   public static String toString(char[][] array){
