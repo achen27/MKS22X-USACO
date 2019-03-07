@@ -84,7 +84,7 @@ public class USACO {
     }
   }
 
-  public static String toString(int[][] array){
+  public static String toString(int[][] array){ //toString for int[][]
     String s = "";
     for (int i = 0; i < array.length; i++){
       for (int j = 0; j < array[0].length; j++){
@@ -105,18 +105,18 @@ public class USACO {
       File f = new File(filename);
       Scanner s = new Scanner(f);
 
-      //put row length, col length, and seconds into variables
+      //puts row length, col length, and seconds into variables
       int row = s.nextInt();
       int col = s.nextInt();
       int seconds = s.nextInt();
 
+      //puts board into String
       String p = "";
       for (int i = 0; i < row; i++){
         p += s.next();
       }
-      //System.out.println(p);
-      //System.out.println(row);
-      //System.out.println(col);
+
+      //inscribes String into char[][] for pasture board
       char[][] pasture = new char[row][col];
       int idx = 0;
       for (int i = 0; i < row; i++){
@@ -125,21 +125,21 @@ public class USACO {
           idx++;
         }
       }
-      //System.out.println(toString(pasture));
 
+      //puts start and end coordinates into variables
       int startR = s.nextInt();
       int startC = s.nextInt();
-      //System.out.println(startR + ", " + startC);
       int endR = s.nextInt();
       int endC = s.nextInt();
-      //System.out.println(endR + ", " + endC);
 
+      //board moves to keep track of all ways to get to any squares
       int[][] moves = new int[row][col];
-      moves[startR-1][startC-1] = 1;
+      moves[startR-1][startC-1] = 1; //places a 1 at starting coordiante
 
+      //helper method to modify moves board
       moves = updateMoves(pasture, moves, startR-1, startC-1, seconds);
-      //System.out.println(toString(pasture));
-      //System.out.println(toString(moves));
+
+      //returns number of moves on requested square
       return moves[endR-1][endC-1];
 
     } catch (FileNotFoundException e){
@@ -149,39 +149,34 @@ public class USACO {
   }
 
   private static int[][] updateMoves(char[][] c, int[][] m, int row, int col, int s){
-    int[][] m2 = new int[m.length][m[0].length];
-    while (s > 0){
+    int[][] m2 = new int[m.length][m[0].length]; //temporary board
+    while (s > 0){ //loops through s number of times (number of seconds)
       for (int i = 0; i < m.length; i++){
         for(int j = 0; j < m[0].length; j++){
-          if (m[i][j] != 0){
+          if (m[i][j] != 0){ //when there is a move on the previous second
+
+            //adds moves to temporary board in all 4 directions unless there is a tree or out of bounds
             try{
               if (c[i+1][j] != '*'){
                 m2[i+1][j] += m[i][j];
-                //System.out.println("D");
               }
-            }catch(ArrayIndexOutOfBoundsException e){
+            }catch(ArrayIndexOutOfBoundsException e){}
 
-            }
             try{
               if (c[i-1][j] != '*'){
                 m2[i-1][j] += m[i][j];
-                //System.out.println("U");
               }
-            }catch(ArrayIndexOutOfBoundsException e){
+            }catch(ArrayIndexOutOfBoundsException e){}
 
-            }
             try{
               if (c[i][j+1] != '*'){
                 m2[i][j+1] += m[i][j];
-                //System.out.println("R");
               }
-            }catch(ArrayIndexOutOfBoundsException e){
+            }catch(ArrayIndexOutOfBoundsException e){}
 
-            }
             try {
               if (c[i][j-1] != '*'){
                 m2[i][j-1] += m[i][j];
-                //System.out.println("L");
               }
             }catch(ArrayIndexOutOfBoundsException e){
 
@@ -189,12 +184,12 @@ public class USACO {
           }
         }
       }
-      m = m2;
-      //System.out.println(toString(m2));
-      m2 = new int[m.length][m[0].length];
-      s--;
+
+      m = m2; //temporary board becomes current board
+      m2 = new int[m.length][m[0].length]; //create empty temp board
+      s--; //subtract 1 second
     }
-    return m;
+    return m; //return current board
   }
 
   public static String toString(char[][] array){
@@ -216,10 +211,10 @@ public class USACO {
     System.out.println(bronze("makelake.5.in"));*/
 
     //System.out.println(silver("ctravel.1.in"));
-    System.out.println(silver("ctravel.2.in"));
-    System.out.println(silver("ctravel.3.in"));
-    System.out.println(silver("ctravel.4.in"));
-    System.out.println(silver("ctravel.5.in"));
+    //System.out.println(silver("ctravel.2.in"));
+    //System.out.println(silver("ctravel.3.in"));
+    //System.out.println(silver("ctravel.4.in"));
+    //System.out.println(silver("ctravel.5.in"));
   }
 
 }
