@@ -133,12 +133,13 @@ public class USACO {
       int[][] moves = new int[row][col];
 
       updateMoves(pasture, moves, startR, startC, seconds);
+      System.out.println(toString(moves));
+      return moves[endR-1][endC-1];
 
     } catch (FileNotFoundException e){
       System.out.println("File not found");
       return 0;
     }
-    return 0;
   }
 
   private static void updateMoves(char[][] c, int[][] m, int row, int col, int s){
@@ -149,17 +150,21 @@ public class USACO {
         for(int j = 0; j <m[0].length; j++){
           if (m[i][j] != 0){
             m[i][j] -= 1;
-            if (c[i+1][j] != '*'){
-              m[i+1][j] += 1;
-            }
-            if (c[i-1][j] != '*'){
-              m[i-1][j] += 1;
-            }
-            if (c[i][j+1] != '*'){
-              m[i][j+1] += 1;
-            }
-            if (c[i][j-1] != '*'){
-              m[i][j-1] += 1;
+            try{
+              if (c[i+1][j] != '*'){
+                m[i+1][j] += 1;
+              }
+              if (c[i-1][j] != '*'){
+                m[i-1][j] += 1;
+              }
+              if (c[i][j+1] != '*'){
+                m[i][j+1] += 1;
+              }
+              if (c[i][j-1] != '*'){
+                m[i][j-1] += 1;
+              }
+            }catch(ArrayIndexOutOfBoundsException e){
+
             }
           }
         }
@@ -187,7 +192,11 @@ public class USACO {
     System.out.println(bronze("makelake.4.in"));
     System.out.println(bronze("makelake.5.in"));*/
 
-    System.out.println(silver("ctravel.1.in"));
+    //System.out.println(silver("ctravel.1.in"));
+    System.out.println(silver("ctravel.2.in"));
+    //System.out.println(silver("ctravel.3.in"));
+    //System.out.println(silver("ctravel.4.in"));
+    //System.out.println(silver("ctravel.5.in"));
   }
 
 }
